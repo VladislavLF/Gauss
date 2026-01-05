@@ -1,0 +1,25 @@
+{% extends 'tasks/base.html' %}
+{% load static %}
+{% block content %}
+<article>
+    <div class="article">
+        <div class="article__title">{{ title }}</div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form__register">
+            <div class="form-error">{{ form.non_field_errors }}</div>
+            <br>
+                {% for f in form %}
+                <p>{{ f }}</p>
+                <div class="form-error">{{ f.errors }}</div>
+            <br>
+            {% endfor %}
+            <a class="form-reset-password" href="{% url 'password_reset' %}">
+                Forgot your password?
+            </a>
+            <button type="submit" class="form-btn">Login</button>
+            </div>
+        </form>
+    </div>
+</article>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'tasks/base.html' %}
+{% block content %}
+    <article>
+        <div class="article">
+            <div class="article__title">{{title}}</div>
+            <div class = "article__tasks__grid">
+                {% for key, value in categories.items %}
+                {% if value.id == 1 %}
+                        <div class="task_part">
+                            Part 1
+                        </div>
+                {% elif value.id == 12 %}
+                        <div class="task_part">
+                            Part 2
+                        </div>
+                {% endif %}
+                {% autoescape off %}
+                <div class="article__tasks__block">
+                    <div class="article__tasks__block__num_of_task">
+                        Task {{value.id}}
+                    </div>
+                    <div class="article__tasks__block__difficult">
+                        {% if value.difficult.lower == 'easy' %}
+                        <span style="color:#00bf08">{{value.difficult}}</span>
+                        {% elif value.difficult.lower == 'medium' %}
+                        <span style="color:#ffff00">{{value.difficult}}</span>
+                        {% elif value.difficult.lower == 'hard' %}
+                        <span style="color:#ff0000">{{value.difficult}}</span>
+                        {% else %}
+                        <span>{{value.difficult}}</span>
+                        {% endif %}
+                    </div>
+                    <div class="article__tasks__block__points">
+                        Maximum score for the task: <span>{{value.points}}</span> out of 31
+                    </div>
+                    <span class="article__tasks__block__theme">Task topics:</span>
+                    <div class="article__tasks__block__description">
+                            {% for i in key %}
+                                <a href="{{ i.get_absolute_url }}">{{ i }}</a>
+                            {% endfor %}
+                    </div>
+                    <a href = "{{ value.get_absolute_url }}" class="article__tasks__block__btn">
+                        Перейти
+                    </a>
+                </div>
+                {% endautoescape %}
+                {% endfor %}
+            </div>
+        </div>
+    </article>
+{% endblock %}

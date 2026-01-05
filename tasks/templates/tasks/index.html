@@ -1,0 +1,32 @@
+{% extends 'tasks/base.html' %}
+{% load static %}
+{% block content %}
+<article>
+        <div class="article">
+            <div class="article__title">{{ title }}</div>
+            <div class="article__mainText">
+            <span>Welcome to gauss.net!</span><br>
+                Here you can find the necessary preparation materials for the Unified State Exam.<br>
+                I'm a math enthusiast with no formal teaching experience who, in my spare time, posts solutions to problems with explanations or films solutions to these problems along with the theoretical material.<br>
+                I wish you a successful time on the site!
+            </div>
+            <div class="article__category">
+                <span>Select a category:</span>
+                <div class="article__category__grid">
+                    <a href="{% url 'options' %}" class="article__category__block">
+                    <span>{{ options }}</span>
+                    <img src="{% static 'tasks/images/category__options.png' %}" alt="{{ options }}" class="article__category__image">
+                    </a>
+                    <a href="{% url 'tasks' %}" class="article__category__block">
+                    <span>{{ tasks }}</span>
+                    <img src="{% static 'tasks/images/category__questions.png' %}" alt="{{ tasks }}" class="article__category__image">
+                    </a>
+                    <a href="{% url 'themes' %}" class="article__category__block">
+                    <span>{{ theory }}</span>
+                    <img src="{% static 'tasks/images/category__theory.png' %}" alt="{{ theory }}" class="article__category__image">
+                    </a>
+                </div>
+            </div>
+            </div>
+</article>
+{% endblock %}

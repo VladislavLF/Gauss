@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./media:/app/media
+      - ./static:/app/static
+    environment:
+      - DEBUG=${DEBUG}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POPULATE_CONTENT=${POPULATE_CONTENT}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - CLEAR_DB_ON_STARTUP=${CLEAR_DB_ON_STARTUP}
+      - TEST_USER_STUDENT1_PASSWORD=${TEST_USER_STUDENT1_PASSWORD}
+      - TEST_USER_STUDENT2_PASSWORD=${TEST_USER_STUDENT2_PASSWORD}
+      - TEST_USER_TEACHER_PASSWORD=${TEST_USER_TEACHER_PASSWORD}
+      - RECAPTCHA_PUBLIC_KEY=${RECAPTCHA_PUBLIC_KEY}
+      - RECAPTCHA_PRIVATE_KEY=${RECAPTCHA_PRIVATE_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    command: >
+      sh -c "python manage.py makemigrations tasks &&
+             python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             python tasks/management/commands/populate_content.py &&
+             gunicorn gauss.wsgi:application --bind 0.0.0.0:8000"
+
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./static:/static
+      - ./media:/media
+      - ./nginx_logs:/var/log/nginx
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  redis_data:
+  nginx_logs:

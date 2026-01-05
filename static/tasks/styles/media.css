@@ -1,0 +1,238 @@
+@media screen and (max-width: 1500px){
+    .container{ width:985px }
+    .header,.header::after,.header__logo img,.header__logo{ height:70px }
+    .header__logo img,.header__logo{ width:70px }
+    .header__title span{ font-size:14px; margin-left:10px }
+    .header__title{ font-size:22px; padding-left:5px }
+    .header-auth{ font-size:14px }
+    .nav a{ font-size:16px; height:40px; border-right-width:4px }
+    .nav a:first-child{ border-left-width:4px }
+    .nav{ height:40px }
+    .nav a:after{ width:10px }
+    .article__task__block{ margin-bottom:40px }
+    .article__task__block__question{ font-size:14px }
+    .article__task__block__question img,
+    .article__option__block__question img,
+    .article__option__block__solution img,
+    .article__task__block__solution img{ width:210px; height:190px; padding:0 5px }
+    .article__option__block__solution img,
+    .article__task__block__solution img{ height:160px }
+    .article__task__block__title,
+    .article__task__block__solution,
+    .article__task__block__answer,
+    .article__task__block__solution__title{ font-size:14px }
+    .article__task__block__answer{ height:40px }
+    .article__task__block__video img{ width:50px; height:50px }
+    .article__task__block__form{ width:50%; height:35px }
+    .text_answer{ width:70%; height:30px }
+    .btn_answer{ width:30%; height:30px; padding:0; font-size:8px }
+    .status_answer{ position:absolute; bottom:-20px; left:15px }
+    .article__title,
+    .article__category span,
+    .article__mainText span{ font-size:22px }
+    .article__mainText{ font-size:18px; padding:0 10px; margin-bottom:5px }
+    .article__category__grid a{ height:220px; width:32%; margin-bottom:5px }
+    .article__category__image,
+    .article__category__block::after{ height:220px }
+    .article__options__block{ width:49% }
+    .article__options__block__btn{ width:150px; height:45px; font-size:16px }
+    .article__options__video{ font-size:16px; height:40px; left:10px }
+    .article__options__video img{ top:9px }
+    .article__options__block__num_of_option,
+    .article__tasks__block__difficult{ font-size:16px }
+    .article__options__block__num_of_option{ padding-left:10px }
+    .article__options__date{ font-size:13px; padding-left:10px }
+    .article__options__description{ font-size:13px; padding:10px 10px 75px 10px }
+    .article__tasks__block__theme{ width:20% }
+    .article__tasks__block__btn{ width:120px; height:40px; font-size:15px }
+    .article__tasks__block__points,
+    .article__tasks__block__description{ width:40%; font-size:13px }
+    .article__tasks__block__description{ width:60% }
+    .article__tasks__block__num_of_task{ font-size:20px }
+    .article__theory__mainblock p{ font-size:30px }
+    .footer__block,
+    .footer__submain{ font-size:16px }
+    .footer__block a{ font-size:17px; margin-top:5px }
+    .footer__block span{ font-size:19px }
+    #footer__description__header{ font-size:28px }
+    .footer__social a img{ width:30px; height:30px }
+    .option_part,
+    .task_part{ font-size:28px }
+    .article__option__block__number_task{ width:30%; font-size:18px }
+    .article__option__block__question,
+    .article__option__block__solution{ font-size:14px }
+    .article__option__block__form{ width:50%; height:35px }
+    .task_page_option,
+    .task_page{ width:30%; font-size:14px }
+    .status_answer_option{ font-size:14px }
+    .task_page_block_img{ width:300px; height:300px }
+    .task_page_block_title{ font-size:14px }
+    .task_page_block_answer,
+    .article__task__video,
+    .comment-form span,
+    .comment-not-auth,
+    .comment-block,
+    .comment-block-name,
+    .comment-block-data{ font-size:14px }
+    #user_user,
+    #user_moderator,
+    #user_admin,
+    #edited{ font-size:12px }
+    .text_answer{ font-size:13px }
+    .form-input-comment{ font-size:14px; width:80% }
+    .form-btn-comment,
+    #option_result_btn{ width:150px; height:40px; font-size:14px }
+    .article__tasks__block__points,
+    .article__tasks__block__description a,
+    .article__task__block__answer{ font-size:14px }
+    .article__tasks__block__theme{ font-size:14px; width:100% }
+    .article__options__video img{ width:50px; height:50px; top:-17px }
+    .accordion:after{ font-size:30px }
+    .form-input,
+    #id_email,
+    #id_new_password1,
+    #id_new_password2{ height:50px; font-size:17px }
+    .form-btn{ height:50px; font-size:17px }
+    .form-reset-password,
+    .input-form{ font-size:17px }
+    .article__theory__mainblock{ width:49% }
+    .article__theory__mainblock a{ font-size:14px }
+}
+
+@media screen and (max-width: 1000px){
+    .container{ width:735px }
+    .header,.header::after,.header__logo img,.header__logo{ height:60px }
+    .header__logo img,.header__logo{ width:60px }
+    .header__title span{ font-size:12px }
+    .header__title{ font-size:20px }
+    .header-auth{ font-size:12px }
+    .nav a{ font-size:14px; height:35px; border-right-width:4px }
+    .nav a:first-child{ border-left-width:4px }
+    .nav{ height:35px }
+    .article__category__grid a{ height:200px }
+    .article__category__image,
+    .article__category__block::after{ height:200px }
+    .footer__block,
+    .footer__submain{ font-size:14px }
+    .footer__block a{ font-size:15px }
+    .footer__block span{ font-size:17px }
+    #footer__description__header{ font-size:26px }
+    .footer__social a img{ width:25px; height:25px }
+}
+
+@media screen and (max-width: 750px){
+    .container{ width:auto; margin:0 }
+    .header,.header::after,.header__logo img,.header__logo{ height:50px }
+    .header__logo img,.header__logo{ width:50px }
+    .header__title span{ font-size:8px }
+    .header__title{ font-size:16px }
+    .header-auth{ font-size:10px }
+    .nav a{ font-size:12px; height:30px; border-right-width:3px }
+    .nav a:first-child{ border-left-width:3px }
+    .nav{ height:30px; box-shadow:none }
+    .article__task__block__question img,
+    .article__option__block__question img,
+    .article__option__block__solution img,
+    .article__task__block__solution img{ width:200px; height:160px }
+    .article__option__block__solution img,
+    .article__task__block__solution img{ height:200px }
+    .article__task__block__form{ width:70% }
+    .article__title,
+    .article__category span,
+    .article__mainText span{ font-size:18px }
+    .article__mainText{ font-size:14px }
+    .article__category__grid a{ height:150px; width:32% }
+    .article__category__image,
+    .article__category__block::after{ height:150px }
+    .article__options__block__btn{ width:100px; height:40px; font-size:15px }
+    .article__options__video{ font-size:15px }
+    .article__options__block__num_of_option,
+    .article__tasks__block__difficult{ font-size:15px }
+    .article__options__date{ font-size:12px }
+    .article__options__description{ font-size:12px }
+    .article__tasks__block{ width:85%; margin:0 auto 20px }
+    .article__tasks__block__btn{ width:100px; height:40px; font-size:15px }
+    .footer__block,
+    .footer__submain{ font-size:13px }
+    .footer__block a{ font-size:14px }
+    .footer__block span{ font-size:16px }
+    #footer__description__header{ font-size:25px }
+    .option_part,
+    .task_part{ font-size:25px }
+    .article__option__block__number_task{ width:40%; font-size:18px }
+    .article__option__block__form{ width:70% }
+    .task_page_option,
+    .task_page{ width:40% }
+    .advertising__block{ top:10px; left:0; font-size:12px }
+    .advertising__block__image{ height:25px }
+    #okno{ width:90%; height:90% }
+    #okno span{ font-size:18px }
+    .close{ font-size:35px; padding-right:5px }
+    #heading__advertising__block__content{ font-size:15px }
+}
+
+@media screen and (max-width: 500px){
+    .header,.header::after,.header__logo img,.header__logo{ height:40px }
+    .header__logo img,.header__logo{ width:40px }
+    .header__title span{ display:none }
+    .header__title{ font-size:15px }
+    .header-auth{ font-size:10px }
+    .nav a{ font-size:9px; height:25px; border-right-width:3px }
+    .nav a:first-child{ border-left-width:3px }
+    .nav{ height:25px; box-shadow:none }
+    .article__task__block__question{ font-size:12px }
+    .article__task__block__title,
+    .article__task__block__solution,
+    .article__task__block__answer,
+    .article__task__block__solution__title{ font-size:12px }
+    .article__title,
+    .article__category span,
+    .article__mainText span{ font-size:15px }
+    .article__mainText{ font-size:12px }
+    .article__category__grid{ flex-wrap:wrap }
+    .article__category__grid a{ height:150px; width:80% }
+    .article__category__image,
+    .article__category__block::after{ height:150px }
+    .article__options__block{ width:100% }
+    .article__tasks__block{ width:100% }
+    .footer__block,
+    .footer__submain{ font-size:10px }
+    .footer__block a{ font-size:12px }
+    .footer__block span{ font-size:15px }
+    #footer__description__header{ font-size:20px }
+    .footer__social a img{ width:20px; height:20px }
+    .article__option__block__number_task{ width:40%; font-size:15px }
+    .article__option__block__question,
+    .article__option__block__solution{ font-size:12px }
+    .task_page_option,
+    .task_page{ width:40%; font-size:12px }
+    .status_answer_option{ font-size:13px }
+    .task_page_block{ font-size:12px }
+    .task_page_block_img{ width:200px; height:200px }
+    .task_page_block_title{ font-size:13px }
+    .task_page_block_answer,
+    .article__task__video,
+    .comment-form span,
+    .comment-not-auth,
+    .comment-block,
+    .comment-block-name,
+    .comment-block-data{ font-size:12px }
+    #user_user,
+    #user_moderator,
+    #user_admin,
+    #edited{ font-size:10px }
+    .form-input-comment{ font-size:12px }
+    .form-btn-comment,
+    #option_result_btn{ font-size:12px }
+    .article__tasks__block__points,
+    .article__tasks__block__description a,
+    .article__task__block__answer{ font-size:12px }
+    .answer__title{ display:none }
+    .form-input,
+    #id_email,
+    #id_new_password1,
+    #id_new_password2{ height:30px; font-size:15px }
+    .form-btn{ height:40px; font-size:15px }
+    .form-reset-password,
+    .input-form{ font-size:15px }
+}

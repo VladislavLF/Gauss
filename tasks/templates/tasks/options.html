@@ -1,0 +1,49 @@
+{% extends 'tasks/base.html' %}
+{% load static %}
+{% block content %}
+<article>
+        <div class="article">
+            <div class="article__title">Options</div>
+            <div class = "article__tasks__grid">
+                {% for i in options %}
+                {% autoescape off %}
+                <div class="article__options__block">
+                    <div class="article__options__block__num_of_option">
+                        Option {{ i.id }}
+                    </div>
+                    <div class="article__tasks__block__difficult">
+                        {% if i.difficult.lower == 'basic' %}
+                        <span style="color:#00bf08">{{i.difficult}}</span>
+                        {% elif i.difficult.lower == 'intermediate' %}
+                        <span style="color:#ffff00">{{i.difficult}}</span>
+                        {% elif i.difficult.lower == 'advanced' %}
+                        <span style="color:#ff0000">{{i.difficult}}</span>
+                        {% else %}
+                        <span>{{i.difficult}}</span>
+                        {% endif %}
+                    </div>
+                    <div class="article__options__date">
+                        Date of publication: <span>{{ i.time_create }}</span>
+                    </div>
+                    <div class="article__options__description">
+                        {% if i.description %}
+                            {{ i.description|linebreaks }}
+                        {% endif %}
+                    </div>
+                    <div class="article__options__video">
+                        {% if i.ytb %}
+                            Analysis on YouTube: <a href="{{ i.ytb }}"><img src="{% static 'tasks/images/youtube__logo.png' %}" alt="youtube"></a>
+                        {% else %}
+                            Analysis on YouTube: <span>absent</span>
+                        {% endif %}
+                    </div>
+                    <a href = "{{ i.get_absolute_url }}" class="article__options__block__btn">
+                        Go to
+                    </a>
+                </div>
+                {% endautoescape %}
+                {% endfor %}
+            </div>
+        </div>
+    </article>
+{% endblock %}

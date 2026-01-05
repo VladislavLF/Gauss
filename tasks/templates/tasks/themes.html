@@ -1,0 +1,19 @@
+{% extends 'tasks/base.html' %}
+{% load static %}
+{% block content %}
+<div class="article">
+    <div class="article__title">{{title}}</div>
+    <div class = "article__tasks__grid">
+        {% for key, value in dct.items %}
+        {% if value %}
+        <div class="article__theory__mainblock">
+            <p>{{ key }}</p>
+            {% for x in value %}
+                <a href="{{ x.ytb }}">{{ x.title }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

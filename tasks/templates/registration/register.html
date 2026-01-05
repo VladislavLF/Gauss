@@ -1,0 +1,21 @@
+{% extends 'tasks/base.html' %}
+{% load static %}
+{% block content %}
+<article>
+    <div class="article">
+        <div class="article__title">{{ title }}</div>
+        <form method="post">
+            <div class="form__register">
+                {% csrf_token %}
+                {% for f in form %}
+                    <p>{{ f }}</p>
+                    <div class="form-error">
+                        {{ f.errors }}<br>
+                    </div>
+                {% endfor %}
+                <button type="submit" class="form-btn">Registration</button>
+            </div>
+        </form>
+    </div>
+</article>
+{% endblock %}

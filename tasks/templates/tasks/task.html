@@ -1,0 +1,86 @@
+{% extends 'tasks/base.html' %}
+{% load static %}
+{% block content %}
+<article>
+<div class="article">
+<div class="article__title">Task №{{title_task}}</div>
+    {% autoescape off %}
+    <div class="task_page_block">
+        <span class="task_page_block_title">Question of the task</span>
+        <div class="task_page_block_content">
+        {{post.condition|linebreaks}} <br>
+             {% if post.photo_condition %}
+        <img src="{{ post.photo_condition.url }}" alt="" width="200px" height="200px" class="task_page_block_img">
+            <br>
+             {% endif %}
+                    </div>
+            <div>Theme: <b>{{ theme }}</b></div>
+                        <br>
+        <span class="task_page_block_title">Solution to the problem</span>
+        {% if post.photo_before %}
+            <img src="{{ post.photo_before.url }}" alt="" width="400px" height="400px" class="task_page_block_img">
+            <br>
+        {% endif %}
+        <div class="task_page_block_content">{{post.solution|linebreaks}}</div>
+            {% if post.photo_after %}
+        <br>
+        <img src="{{ post.photo_after.url }}" alt="" width="400px" height="400px" class="task_page_block_img">
+             {% endif %}
+        <span class="task_page_block_answer">Answer:
+            <span>
+                {{post.answer}}
+            </span>
+        </span>
+                           <div class="article__task__video">
+                        {% if post.ytb %}
+                            Analysis on YouTube: <a href="{{ post.ytb }}"><img src="{% static 'tasks/images/youtube__logo.png' %}" alt="youtube"></a>
+                        {% else %}
+                            Analysis on YouTube: <span>absent</span>
+                        {% endif %}
+                                </div>
+    </div>
+    {% if request.user.is_authenticated %}
+<div class="comment-form">
+<form action="" method="post">
+{% csrf_token %}
+<div class="form-error">{{ form.non_field_errors }}</div>
+    <span>Your comment:</span><br>
+{% for f in form %}
+{{ f }}
+<div class="form-error">{{ f.errors }}</div>
+{% endfor %}
+<input type="hidden" value="{{ request.user.id }}" name="user" />
+<input type="hidden" value="{{ title_task }}" name="post"/>
+<button type="submit" class="form-btn-comment">Add</button>
+</form>
+</div>
+    {% else %}
+    <div class="comment-not-auth">
+    <span>Only authorized users can leave comments.</span><br>
+    <a href="{% url 'login' %}">Log in</a>
+        </div>
+    {% endif %}
+    <br><br>
+    <div class="comments">
+        {% for i in comments|slice:"::-1" %}
+            <div class="comment-block">
+            {% if i.user.is_superuser %}
+                        <span class="comment-block-name">{{ i.user }} | <span id="user_admin">admin</span></span>
+                {% elif i.user.is_staff %}
+                        <span class="comment-block-name">{{ i.user }} | <span id="user_moderator">moderator</span></span>
+                {% else %}
+                        <span class="comment-block-name">{{ i.user }} | <span id="user_user">user</span></span>
+            {% endif %}
+                <br>
+            <span class="comment-block-data">Abandoned <span>{{ i.created }}</span></span><br>
+            {% if i.updated|date:"U" > i.created|date:"U" %}
+                <span id="edited">Edited</span>
+            {% endif %}
+            <div>{{ i.text|linebreaks }}</div>
+             </div>
+        {% endfor %}
+    </div>
+    {% endautoescape %}
+</div>
+</article>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'tasks/base.html' %}
+{% load static %}
+{% block content %}
+<article>
+<div class="article">
+    {% if title %}
+<div class="article__title">{{ title }}</div>
+    {% endif %}
+<div class="article__task__grid">
+    {% if posts|length != 0 %}
+    {% for p in posts %}
+    {% autoescape off %}
+    <a href="{{ p.get_absolute_url }}" class="task_page">go to task</a>
+               <div class="article__task__block">
+                   {% if p.cat_id <= 11 %}
+                   <div class="accordion" onclick = "clicked_accordion(this),close_panel(this)">
+                   {% else %}
+                   <div class="accordion" onclick = "close_panel(this)">
+                   {% endif %}
+                       <div class="article__task__block__question" >
+                       <div class="article__task__block__title">
+                           <span>question of the task</span>
+                       </div>
+                           <div>{{p.condition|linebreaks}}
+                            {% if p.photo_condition %}
+                                <br>
+                                <img src="{{ p.photo_condition.url }}" alt="" width="200px" height="200px">
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="article__task__block__solution">
+                           <div class="article__task__block__solution__title">
+                               <span>solution to the problem</span>
+                           </div>
+                            {% if p.photo_before %}
+                                <img src="{{ p.photo_before.url }}" alt="" width="400px" height="400px">
+                                <br>
+                            {% endif %}
+                                <div>{{p.solution|linebreaks}}</div>
+                            {% if p.photo_after %}
+                            <br>
+                            <img src="{{ p.photo_after.url }}" alt="" width="400px" height="400px">
+                            {% endif %}
+                           <div class="article__options__video">
+                        {% if p.ytb %}
+                            Analysis on YouTube: <a href="{{ p.ytb }}"><img src="{% static 'tasks/images/youtube__logo.png' %}" alt="youtube"></a>
+                        {% else %}
+                            Analysis on YouTube: <span>absent</span>
+                        {% endif %}
+                                </div>
+                            <div class="article__task__block__answer">
+                                <span class="answer__title">Answer:</span>
+                                <span>{{p.answer|linebreaks}}</span>
+                            </div>
+                        </div>
+                    </div>
+                   {% if p.cat_id <= 11 %}
+                    <div class="article__task__block__input">
+                        <div class="article__task__block__form">
+                            <input class="text_answer" type="text" placeholder="Your answer">
+                            <button class="btn_answer" onclick = "clicked_button(this);">Check</button>
+                        </div>
+                        <div class = "status_answer"></div>
+                    </div>
+                   {% endif %}
+                </div>
+    {% endautoescape %}
+    {% endfor %}
+{% if page_obj.has_other_pages %}
+<nav class="list-pages">
+{% if page_obj.has_previous %}
+<a href="?page={{ page_obj.previous_page_number }}" class="page-num">&lt;</a>
+{% endif %}
+        {% for p in paginator.page_range %}
+		{% if page_obj.number == p %}
+        <a class="page-num page-num-selected">{{ p }}</a>
+		{% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2  %}
+        <a class="page-num" href="?page={{ p }}">{{ p }}</a>
+		{% endif %}
+        {% endfor %}
+{% if page_obj.has_next %}
+<a href="?page={{ page_obj.next_page_number }}" class="page-num">&gt;</a>
+{% endif %}
+</nav>
+{% endif %}
+{% else %}
+<b>The task catalog is currently empty.</b>
+{% endif %}
+</div>
+</div>
+</div>
+</article>
+{% endblock %}

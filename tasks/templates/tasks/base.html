@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ title }}</title>
+<link type="text/css" href="{% static 'tasks/styles/styles.css' %}" rel="stylesheet" />
+<link type="text/css" href="{% static 'tasks/styles/media.css' %}" rel="stylesheet" />
+<link rel="shortcut icon" href="{% static 'tasks/images/logo.png' %}" type="image/x-icon" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="{% static 'tasks/scripts/script.js' %}"></script>
+</head>
+<body>
+{% block header %}
+<header>
+    <div class="header">
+        <a href="{% url 'home' %}" class="header__logo">
+            <img src="{% static 'tasks/images/logo.png' %}" alt="logo">
+        </a>
+        <a href="{% url 'home' %}" class="header__title">
+        <p>gauss.net</p>
+        <br>
+        <span>
+        math educational blog
+        <br>
+        to prepare for the Unified State Exam in advanced mathematics
+        </span>
+        </a>
+        <div class="header-auth">
+            {% if request.user.is_authenticated %}
+            <span>{{user.username}}</span> |
+            <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">
+                    Logout
+                </button>
+            </form>
+            {% else %}
+            <a href="{% url 'register' %}">Registration</a> | <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+{% endblock %}
+{% block navigation %}
+    <nav>
+        <div class="nav">
+            <div class="nav__container">
+                <a href="{% url 'options' %}">Options</a>
+                <a href="{% url 'tasks' %}">Tasks</a>
+                <a href="{% url 'themes' %}">Theory</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+<div class="container">
+{% block content %}
+{% endblock %}
+</div>
+{% block footer %}
+    <footer>
+    <div class="footer__main">
+        <div class="footer__block">
+            <span>Site sections</span>
+            <a href="{% url 'options' %}">Options</a>
+            <a href="{% url 'tasks' %}">Tasks</a>
+            <a href="{% url 'themes' %}">Theory</a>
+        </div>
+        <div class="footer__block">
+            <a id="footer__description__header" href="{% url 'home' %}">gauss.net</a>
+        </div>
+        <div class="footer__block">
+            <span>Contact me</span>
+            <div class="footer__social">
+            <a href="#"><img src="{% static 'tasks/images/gmail.png' %}" alt="Email"></a>
+            <a href="#"><img src="{% static 'tasks/images/telegram.png' %}" alt="Telegram"></a>
+            <a href="#"><img src="{% static 'tasks/images/twitter.png' %}" alt="Twitter"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer__submain">
+        © 2026 <a href="{% url 'home' %}">gauss.net</a><br>
+        Copying solutions from this website, either partially or in whole, for distribution on other resources, including paper, is strictly prohibited.<br>
+        All solutions are the property of the site.
+    </div>
+    </footer>
+{% endblock %}
+</body>
+</html>
